@@ -32,5 +32,4 @@
 *.app
 
 # User added
-.vscode/*
 build/*
