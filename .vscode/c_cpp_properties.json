@@ -3,6 +3,13 @@
     {
       "name": "STM32",
       "includePath": [
+        "App",
+        "BrytecConfigEmbedded",
+        "BrytecConfigEmbedded/Boards",
+        "BrytecConfigEmbedded/Can",
+        "BrytecConfigEmbedded/Deserializer",
+        "BrytecConfigEmbedded/Nodes",
+        "BrytecConfigEmbedded/Utils",
         "Core/Inc",
         "Drivers/CMSIS/Device/ST/STM32G4xx/Include",
         "Drivers/CMSIS/Include",

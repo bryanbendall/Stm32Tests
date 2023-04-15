@@ -73,6 +73,38 @@ USB_Device/Target/usbd_conf.c
 
 
 CPP_SOURCES = \
+App/NucleoBoard.cpp \
+App/ProgmemDeserializer.cpp \
+BrytecConfigEmbedded/Can/EBrytecCan.cpp \
+BrytecConfigEmbedded/Can/EPinStatusQueue.cpp \
+BrytecConfigEmbedded/EBrytecApp.cpp \
+BrytecConfigEmbedded/ENode.cpp \
+BrytecConfigEmbedded/IOTypes.cpp \
+BrytecConfigEmbedded/Nodes/EAndNode.cpp \
+BrytecConfigEmbedded/Nodes/ECanBusNode.cpp \
+BrytecConfigEmbedded/Nodes/ECompareNode.cpp \
+BrytecConfigEmbedded/Nodes/EConvertNode.cpp \
+BrytecConfigEmbedded/Nodes/ECounterNode.cpp \
+BrytecConfigEmbedded/Nodes/ECurveNode.cpp \
+BrytecConfigEmbedded/Nodes/EDelayNode.cpp \
+BrytecConfigEmbedded/Nodes/EFinalValueNode.cpp \
+BrytecConfigEmbedded/Nodes/EInitialValueNode.cpp \
+BrytecConfigEmbedded/Nodes/EInvertNode.cpp \
+BrytecConfigEmbedded/Nodes/EMapValueNode.cpp \
+BrytecConfigEmbedded/Nodes/EMathNode.cpp \
+BrytecConfigEmbedded/Nodes/ENodeGroupNode.cpp \
+BrytecConfigEmbedded/Nodes/EOnOffNode.cpp \
+BrytecConfigEmbedded/Nodes/EOrNode.cpp \
+BrytecConfigEmbedded/Nodes/EPIDNode.cpp \
+BrytecConfigEmbedded/Nodes/EPinCurrentNode.cpp \
+BrytecConfigEmbedded/Nodes/EPushButtonNode.cpp \
+BrytecConfigEmbedded/Nodes/ESwitchNode.cpp \
+BrytecConfigEmbedded/Nodes/EToggleNode.cpp \
+BrytecConfigEmbedded/Nodes/ETwoStageNode.cpp \
+BrytecConfigEmbedded/Nodes/EValueNode.cpp \
+BrytecConfigEmbedded/Utils/ENodeDeserializer.cpp \
+BrytecConfigEmbedded/Utils/ENodeGroup.cpp \
+BrytecConfigEmbedded/Utils/PlacementNew.cpp \
 Core/Src/cppMain.cpp
 
 
@@ -142,6 +174,13 @@ AS_INCLUDES = \
 
 # C includes
 C_INCLUDES =  \
+-IApp \
+-IBrytecConfigEmbedded \
+-IBrytecConfigEmbedded/Boards \
+-IBrytecConfigEmbedded/Can \
+-IBrytecConfigEmbedded/Deserializer \
+-IBrytecConfigEmbedded/Nodes \
+-IBrytecConfigEmbedded/Utils \
 -ICore/Inc \
 -IDrivers/CMSIS/Device/ST/STM32G4xx/Include \
 -IDrivers/CMSIS/Include \
