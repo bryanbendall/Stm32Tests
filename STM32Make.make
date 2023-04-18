@@ -75,8 +75,10 @@ USB_Device/Target/usbd_conf.c
 CPP_SOURCES = \
 App/NucleoBoard.cpp \
 App/ProgmemDeserializer.cpp \
+App/Usb.cpp \
 BrytecConfigEmbedded/Can/EBrytecCan.cpp \
 BrytecConfigEmbedded/Can/EPinStatusQueue.cpp \
+BrytecConfigEmbedded/Deserializer/BinaryBufferSerializer.cpp \
 BrytecConfigEmbedded/EBrytecApp.cpp \
 BrytecConfigEmbedded/ENode.cpp \
 BrytecConfigEmbedded/IOTypes.cpp \

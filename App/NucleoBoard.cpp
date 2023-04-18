@@ -1,40 +1,42 @@
 #include "BrytecBoard.h"
 
+#include <stdio.h>
+
 namespace Brytec {
 
 void BrytecBoard::error(EBrytecErrors error)
 {
     switch (error) {
     case EBrytecErrors::ModuleHeader:
-        // std::cout << "Module header is wrong" << std::endl;
+        printf("Module header is wrong");
         break;
     case EBrytecErrors::NodeGroupHeader:
-        // std::cout << "Node Group header is wrong" << std::endl;
+        printf("Node Group header is wrong");
         break;
     case EBrytecErrors::ModuleNotEnabled:
-        // std::cout << "This module is not enabled" << std::endl;
+        printf("This module is not enabled");
         break;
     case EBrytecErrors::AddNodeFailed:
-        // std::cout << "Failed to add node" << std::endl;
+        printf("Failed to add node");
         break;
     case EBrytecErrors::NodeVectorOutOfSpace:
-        // std::cout << "Node Vector out of space" << std::endl;
+        printf("Node Vector out of space");
         break;
     case EBrytecErrors::FailedToCreateNode:
-        // std::cout << "Failed to create node" << std::endl;
+        printf("Failed to create node");
         break;
     case EBrytecErrors::NodeIndexOutOfBounds:
-        // std::cout << "Node index out of bounds" << std::endl;
+        printf("Node index out of bounds");
         break;
     case EBrytecErrors::BadAlloc:
-        // std::cout << "Node group allocation failed" << std::endl;
+        printf("Node group allocation failed");
         break;
     case EBrytecErrors::CanBufferFull:
-        // std::cout << "Can Buffer Full" << std::endl;
+        printf("Can Buffer Full");
         break;
 
     default:
-        // std::cout << "Unknown Error" << std::endl;
+        printf("Unknown Error");
         break;
     }
 }
