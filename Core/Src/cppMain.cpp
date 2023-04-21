@@ -7,6 +7,8 @@
 #include "usart.h"
 #include "usbd_cdc_if.h"
 
+#include "Program.h"
+
 static uint64_t lastMillis = 0;
 Brytec::EBrytecApp app;
 Usb usb;
@@ -15,7 +17,7 @@ uint8_t data = 0;
 void cppMain()
 {
 
-    Brytec::BinaryDeserializer des;
+    Brytec::BinaryDeserializer des(progmem_data, sizeof(progmem_data));
     app.deserializeModule(des);
 
     // if (Brytec::EBrytecApp::isDeserializeOk())
@@ -30,9 +32,6 @@ void cppMain()
         HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
         // uint8_t data[] = "Hello\n";
         // HAL_UART_Transmit(&hlpuart1, data, 6, 100);
-
-        // uint8_t usb[] = "From usb cdc";
-        // CDC_Transmit_FS(usb, 12);
 
         data++;
         Brytec::CanExtFrame frame;

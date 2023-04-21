@@ -74,11 +74,11 @@ USB_Device/Target/usbd_conf.c
 
 CPP_SOURCES = \
 App/NucleoBoard.cpp \
-App/ProgmemDeserializer.cpp \
 App/Usb.cpp \
 BrytecConfigEmbedded/Can/EBrytecCan.cpp \
 BrytecConfigEmbedded/Can/EPinStatusQueue.cpp \
 BrytecConfigEmbedded/Deserializer/BinaryBufferSerializer.cpp \
+BrytecConfigEmbedded/Deserializer/BinaryDeserializer.cpp \
 BrytecConfigEmbedded/EBrytecApp.cpp \
 BrytecConfigEmbedded/ENode.cpp \
 BrytecConfigEmbedded/IOTypes.cpp \
@@ -104,6 +104,7 @@ BrytecConfigEmbedded/Nodes/ESwitchNode.cpp \
 BrytecConfigEmbedded/Nodes/EToggleNode.cpp \
 BrytecConfigEmbedded/Nodes/ETwoStageNode.cpp \
 BrytecConfigEmbedded/Nodes/EValueNode.cpp \
+BrytecConfigEmbedded/Usb/UsbDefs.cpp \
 BrytecConfigEmbedded/Utils/ENodeDeserializer.cpp \
 BrytecConfigEmbedded/Utils/ENodeGroup.cpp \
 BrytecConfigEmbedded/Utils/PlacementNew.cpp \
@@ -182,6 +183,7 @@ C_INCLUDES =  \
 -IBrytecConfigEmbedded/Can \
 -IBrytecConfigEmbedded/Deserializer \
 -IBrytecConfigEmbedded/Nodes \
+-IBrytecConfigEmbedded/Usb \
 -IBrytecConfigEmbedded/Utils \
 -ICore/Inc \
 -IDrivers/CMSIS/Device/ST/STM32G4xx/Include \

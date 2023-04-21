@@ -9,6 +9,7 @@
         "BrytecConfigEmbedded/Can",
         "BrytecConfigEmbedded/Deserializer",
         "BrytecConfigEmbedded/Nodes",
+        "BrytecConfigEmbedded/Usb",
         "BrytecConfigEmbedded/Utils",
         "Core/Inc",
         "Drivers/CMSIS/Device/ST/STM32G4xx/Include",
