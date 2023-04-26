@@ -29,26 +29,35 @@ void cppMain()
     app.setupPins();
 
     while (1) {
-        HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
         // uint8_t data[] = "Hello\n";
         // HAL_UART_Transmit(&hlpuart1, data, 6, 100);
 
-        data++;
-        Brytec::CanExtFrame frame;
-        frame.id = 99;
-        frame.data[0] = data;
-        frame.data[1] = data * 2;
-        frame.data[2] = 45;
-        frame.data[3] = 56;
-        frame.data[4] = 67;
-        frame.data[5] = 78;
-        frame.data[6] = 89;
-        frame.data[7] = 91;
-        usb.send(frame);
+        if (HAL_GetTick() % 10 == 0) {
 
-        app.update(0.5f);
+            HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
 
-        HAL_Delay(500);
+            data++;
+            Brytec::CanExtFrame frame;
+            frame.id = 99;
+            frame.data[0] = 23;
+            frame.data[1] = 34;
+            frame.data[2] = 45;
+            frame.data[3] = 56;
+            frame.data[4] = 67;
+            frame.data[5] = 78;
+            frame.data[6] = 89;
+            frame.data[7] = data;
+            usb.send(frame);
+
+            // HAL_Delay(10);
+
+            frame.id = 23;
+            usb.send(frame);
+        }
+
+        usb.update();
+
+        HAL_Delay(1);
 
         // Brytec //////////////////////////////
         uint64_t difference = HAL_GetTick() - lastMillis;

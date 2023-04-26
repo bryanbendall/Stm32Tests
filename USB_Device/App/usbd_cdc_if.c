@@ -89,6 +89,7 @@
 /* It's up to user to redefine and/or remove those define */
 /** Received data over USB are stored in this buffer      */
 uint8_t UserRxBufferFS[APP_RX_DATA_SIZE];
+uint32_t RxDataLenth = 0;
 
 /** Data to send over USB CDC are stored in this buffer   */
 uint8_t UserTxBufferFS[APP_TX_DATA_SIZE];
@@ -261,8 +262,9 @@ static int8_t CDC_Control_FS(uint8_t cmd, uint8_t* pbuf, uint16_t length)
 static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
 {
   /* USER CODE BEGIN 6 */
-  USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
+  USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[RxDataLenth]);
   USBD_CDC_ReceivePacket(&hUsbDeviceFS);
+  RxDataLenth += *Len;
   return (USBD_OK);
   /* USER CODE END 6 */
 }
@@ -316,7 +318,15 @@ static int8_t CDC_TransmitCplt_FS(uint8_t *Buf, uint32_t *Len, uint8_t epnum)
 }
 
 /* USER CODE BEGIN PRIVATE_FUNCTIONS_IMPLEMENTATION */
-
+void CDC_Get_Received_Data_FS(uint8_t* Buf, uint32_t Len)
+{
+  if (RxDataLenth < Len) {
+    memcpy(Buf, UserRxBufferFS, RxDataLenth);
+  } else {
+    memcpy(Buf, UserRxBufferFS, Len);
+  }
+  RxDataLenth = 0;
+}
 /* USER CODE END PRIVATE_FUNCTIONS_IMPLEMENTATION */
 
 /**
