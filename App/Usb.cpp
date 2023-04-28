@@ -4,9 +4,6 @@
 #include "UsbBuffer.h"
 #include "usbd_cdc_if.h"
 
-extern uint8_t UserRxBufferFS[APP_RX_DATA_SIZE];
-extern uint32_t RxDataLenth;
-
 static Brytec::UsbBuffer s_sendBuffer;
 
 void Usb::send(Brytec::CanExtFrame& frame)
@@ -25,28 +22,50 @@ extern USBD_HandleTypeDef hUsbDeviceFS;
 
 void Usb::update()
 {
-    static uint8_t rawSend[64];
 
-    USBD_CDC_HandleTypeDef* hcdc = (USBD_CDC_HandleTypeDef*)hUsbDeviceFS.pClassData;
-    // Test if the USB CDC is ready to transmit
-    if (hcdc->TxState == 0 && s_sendBuffer.size() > 0) {
-        Brytec::UsbPacket sendPacket = s_sendBuffer.get();
-        rawSend[0] = Brytec::PacketStart;
-        rawSend[1] = sendPacket.length;
-        memcpy(&rawSend[2], sendPacket.data, sendPacket.length + 2);
-        USBD_CDC_SetTxBuffer(&hUsbDeviceFS, rawSend, sendPacket.length + 2);
-        USBD_CDC_TransmitPacket(&hUsbDeviceFS);
+    // Send
+    {
+        static uint8_t rawSend[64];
+        USBD_CDC_HandleTypeDef* hcdc = (USBD_CDC_HandleTypeDef*)hUsbDeviceFS.pClassData;
+        // Test if the USB CDC is ready to transmit
+        if (hcdc->TxState == 0 && s_sendBuffer.size() > 0) {
+            Brytec::UsbPacket sendPacket = s_sendBuffer.get();
+            rawSend[0] = Brytec::PacketStart;
+            rawSend[1] = sendPacket.length;
+            memcpy(&rawSend[2], sendPacket.data, sendPacket.length + 2);
+            USBD_CDC_SetTxBuffer(&hUsbDeviceFS, rawSend, sendPacket.length + 2);
+            USBD_CDC_TransmitPacket(&hUsbDeviceFS);
+            printf("tx data: %d", sendPacket.data[6]);
+        }
     }
 
-    static uint8_t rxBuffer[64];
-    if (RxDataLenth) {
-        // We have data
-        CDC_Get_Received_Data_FS(rxBuffer, 64);
-        Brytec::UsbPacket packet;
-        packet.length = rxBuffer[1];
-        if (packet.length <= 62) {
-            memcpy(packet.data, &rxBuffer[2], packet.length);
-            send(packet);
+    // Receive
+    {
+        static uint8_t rxBuffer[APP_RX_DATA_SIZE];
+        if (CDC_Rx_Data_Lenth() > 14) {
+            // We have data
+            uint32_t dataLength = CDC_Get_Received_Data_FS(rxBuffer);
+
+            uint32_t i = 0;
+            while (i < dataLength) {
+                if (rxBuffer[i] == Brytec::PacketStart && (dataLength - i) > 3) {
+
+                    Brytec::UsbPacket packet;
+                    packet.length = rxBuffer[i + 1];
+                    if (packet.length <= 62 && (dataLength - i - packet.length) >= 0) {
+                        memcpy(packet.data, &rxBuffer[i + 2], packet.length);
+                        i += (2 + packet.length);
+                        // Valid packet, do something with it
+                        printf("rx data: %d", packet.data[6]);
+                        send(packet);
+                    } else {
+                        i++;
+                    }
+
+                } else {
+                    i++;
+                }
+            }
         }
     }
 }

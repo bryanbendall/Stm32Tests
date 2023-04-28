@@ -262,6 +262,11 @@ static int8_t CDC_Control_FS(uint8_t cmd, uint8_t* pbuf, uint16_t length)
 static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
 {
   /* USER CODE BEGIN 6 */
+  if (RxDataLenth + *Len >= APP_RX_DATA_SIZE) {
+    RxDataLenth = 0;
+    // Lost data
+  }
+
   USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[RxDataLenth]);
   USBD_CDC_ReceivePacket(&hUsbDeviceFS);
   RxDataLenth += *Len;
@@ -318,15 +323,20 @@ static int8_t CDC_TransmitCplt_FS(uint8_t *Buf, uint32_t *Len, uint8_t epnum)
 }
 
 /* USER CODE BEGIN PRIVATE_FUNCTIONS_IMPLEMENTATION */
-void CDC_Get_Received_Data_FS(uint8_t* Buf, uint32_t Len)
+
+uint32_t CDC_Rx_Data_Lenth()
 {
-  if (RxDataLenth < Len) {
-    memcpy(Buf, UserRxBufferFS, RxDataLenth);
-  } else {
-    memcpy(Buf, UserRxBufferFS, Len);
-  }
-  RxDataLenth = 0;
+  return RxDataLenth;
 }
+
+uint32_t CDC_Get_Received_Data_FS(uint8_t* Buf)
+{
+  uint32_t dataLength = RxDataLenth;
+  memcpy(Buf, UserRxBufferFS, dataLength);
+  RxDataLenth = 0;
+  return dataLength;
+}
+
 /* USER CODE END PRIVATE_FUNCTIONS_IMPLEMENTATION */
 
 /**
