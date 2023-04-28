@@ -109,9 +109,9 @@ uint8_t CDC_Transmit_FS(uint8_t* Buf, uint16_t Len);
 
 /* USER CODE BEGIN EXPORTED_FUNCTIONS */
 
-uint32_t CDC_Rx_Data_Lenth();
-
-uint32_t CDC_Get_Received_Data_FS(uint8_t* Buf);
+// Note: Taken from
+// https://github.com/Nefastor-Online/STM32_VCP
+int vcp_recv(uint8_t* buf, uint16_t len);
 
 /* USER CODE END EXPORTED_FUNCTIONS */
 

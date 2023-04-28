@@ -49,12 +49,12 @@ void cppMain()
             frame.data[5] = 78;
             frame.data[6] = 89;
             frame.data[7] = data;
-            // usb.send(frame);
+            usb.send(frame);
 
             // HAL_Delay(10);
 
             frame.id = 23;
-            // usb.send(frame);
+            usb.send(frame);
         }
 
         usb.update();
