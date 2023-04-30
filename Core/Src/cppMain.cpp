@@ -6,6 +6,7 @@
 #include "stm32g4xx_hal.h"
 #include "usart.h"
 #include "usbd_cdc_if.h"
+#include "Deserializer/BinaryArrayDeserializer.h"
 
 #include "Program.h"
 
@@ -17,7 +18,7 @@ uint8_t data = 0;
 void cppMain()
 {
 
-    Brytec::BinaryDeserializer des(progmem_data, sizeof(progmem_data));
+    Brytec::BinaryArrayDeserializer des(progmem_data, sizeof(progmem_data));
     app.deserializeModule(des);
 
     // if (Brytec::EBrytecApp::isDeserializeOk())

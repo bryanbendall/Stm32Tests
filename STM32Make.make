@@ -77,8 +77,10 @@ App/NucleoBoard.cpp \
 App/Usb.cpp \
 BrytecConfigEmbedded/Can/EBrytecCan.cpp \
 BrytecConfigEmbedded/Can/EPinStatusQueue.cpp \
+BrytecConfigEmbedded/Deserializer/BinaryArrayDeserializer.cpp \
 BrytecConfigEmbedded/Deserializer/BinaryBufferSerializer.cpp \
-BrytecConfigEmbedded/Deserializer/BinaryDeserializer.cpp \
+BrytecConfigEmbedded/Deserializer/BinaryPathDeserializer.cpp \
+BrytecConfigEmbedded/Deserializer/BinaryProgmemDeserializer.cpp \
 BrytecConfigEmbedded/EBrytecApp.cpp \
 BrytecConfigEmbedded/ENode.cpp \
 BrytecConfigEmbedded/IOTypes.cpp \
