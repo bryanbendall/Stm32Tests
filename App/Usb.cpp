@@ -54,7 +54,8 @@ void Usb::update()
                     memcpy(packet.data, &rxBuffer[i + 2], packet.length);
                     i += (2 + packet.length);
                     // Valid packet, do something with it
-                    send(packet);
+                    // send(packet);
+                    m_app->brytecCanReceived(packet.as<Brytec::CanExtFrame>());
                 } else {
                     i++;
                 }

@@ -76,6 +76,7 @@ CPP_SOURCES = \
 App/NucleoBoard.cpp \
 App/Usb.cpp \
 BrytecConfigEmbedded/Can/EBrytecCan.cpp \
+BrytecConfigEmbedded/Can/ECanCommandQueue.cpp \
 BrytecConfigEmbedded/Can/EPinStatusQueue.cpp \
 BrytecConfigEmbedded/Deserializer/BinaryArrayDeserializer.cpp \
 BrytecConfigEmbedded/Deserializer/BinaryBufferSerializer.cpp \

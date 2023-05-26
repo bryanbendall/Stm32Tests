@@ -74,6 +74,9 @@ excludes:
   - "**/Example/**"
   - "**/example/**"
   - "**_template.*"
+  - - BrytecConfigEmbedded/Boards/ArduinoMegaTest.cpp
+  - - BrytecConfigEmbedded/Boards/ArduinoUnoTest.cpp
+  - - BrytecConfigEmbedded/Boards/DesktopSimulation.cpp
 
 
 # Include directories (directories containing .h or .hpp files)
