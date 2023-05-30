@@ -130,4 +130,30 @@ void BrytecBoard::updateConfig(uint8_t* data, uint32_t size, uint32_t offset)
 {
     memcpy(s_configData + offset, data, size);
 }
+
+uint32_t BrytecBoard::getTemplateSize()
+{
+    return sizeof(moduleTemplate);
+}
+
+void BrytecBoard::getTemplateData(uint8_t* dest, uint32_t offset, uint32_t length)
+{
+    if (offset > sizeof(moduleTemplate))
+        return;
+
+    memcpy(dest, &moduleTemplate[offset], length);
+}
+
+uint32_t BrytecBoard::getConfigSize()
+{
+    return s_dataSize;
+}
+
+void BrytecBoard::getConfigData(uint8_t* dest, uint32_t offset, uint32_t length)
+{
+    if (offset > s_dataSize)
+        return;
+
+    memcpy(dest, &s_configData[offset], length);
+}
 }
