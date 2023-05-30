@@ -36,6 +36,7 @@ BUILD_DIR = build
 ######################################
 # C sources
 C_SOURCES =  \
+Core/Src/fdcan.c \
 Core/Src/gpio.c \
 Core/Src/main.c \
 Core/Src/stm32g4xx_hal_msp.c \
@@ -47,6 +48,7 @@ Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c \
 Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dma.c \
 Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dma_ex.c \
 Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_exti.c \
+Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_fdcan.c \
 Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash.c \
 Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash_ex.c \
 Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash_ramfunc.c \

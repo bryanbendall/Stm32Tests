@@ -174,7 +174,7 @@ static int8_t CDC_Init_FS(void)
     USBD_CDC_SetTxBuffer(&hUsbDeviceFS, UserTxBufferFS, 0);
     USBD_CDC_SetRxBuffer(&hUsbDeviceFS, UserRxBufferFS);
     return (USBD_OK);
-    /* USER CODE END 3 */
+  /* USER CODE END 3 */
 }
 
 /**
