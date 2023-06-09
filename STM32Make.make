@@ -75,6 +75,7 @@ USB_Device/Target/usbd_conf.c
 
 
 CPP_SOURCES = \
+App/CanBus.cpp \
 App/NucleoBoard.cpp \
 App/Usb.cpp \
 BrytecConfigEmbedded/Can/EBrytecCan.cpp \
