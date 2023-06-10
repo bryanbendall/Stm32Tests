@@ -1,6 +1,8 @@
 #include "Usb.h"
 
 #include "BinaryBufferSerializer.h"
+#include "CanBus.h"
+#include "EBrytecApp.h"
 #include "UsbBuffer.h"
 #include "usbd_cdc_if.h"
 
@@ -54,8 +56,9 @@ void Usb::update()
                     memcpy(packet.data, &rxBuffer[i + 2], packet.length);
                     i += (2 + packet.length);
                     // Valid packet, do something with it
-                    // send(packet);
-                    m_app->brytecCanReceived(packet.as<Brytec::CanExtFrame>());
+                    Brytec::CanExtFrame frame = packet.as<Brytec::CanExtFrame>();
+                    Brytec::EBrytecApp::brytecCanReceived(frame);
+                    CanBus::send(frame);
                 } else {
                     i++;
                 }

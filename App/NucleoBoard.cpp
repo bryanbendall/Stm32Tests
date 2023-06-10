@@ -1,5 +1,6 @@
 #include "BrytecBoard.h"
 
+#include "CanBus.h"
 #include "Deserializer/BinaryArrayDeserializer.h"
 #include "NucleoBoardDefs.h"
 #include "Usb.h"
@@ -102,16 +103,10 @@ void BrytecBoard::setPinValue(uint16_t index, IOTypes::Types type, float value)
     }
 }
 
-static Usb* s_usb = nullptr;
-void BrytecBoard::setUsb(Usb* usb)
-{
-    s_usb = usb;
-}
-
 void BrytecBoard::sendBrytecCan(CanExtFrame frame)
 {
-    if (s_usb)
-        s_usb->send(frame);
+    Usb::send(frame);
+    CanBus::send(frame);
 }
 
 void BrytecBoard::ReserveConfigSize(uint16_t size)
