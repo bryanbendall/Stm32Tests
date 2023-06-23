@@ -67,7 +67,10 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+  // Turn off buffers, so I/O occurs immediately
+  setvbuf(stdin, NULL, _IONBF, 0);
+  setvbuf(stdout, NULL, _IONBF, 0);
+  setvbuf(stderr, NULL, _IONBF, 0);
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -159,6 +162,16 @@ PUTCHAR_PROTOTYPE
 {
   HAL_UART_Transmit(&hlpuart1, (uint8_t*)&ch, 1, 0xFFFF);
   return ch;
+}
+
+int _write(int file, char* ptr, int len)
+{
+  int DataIdx;
+
+  for (DataIdx = 0; DataIdx < len; DataIdx++) {
+    __io_putchar(*ptr++);
+  }
+  return len;
 }
 /* USER CODE END 4 */
 
