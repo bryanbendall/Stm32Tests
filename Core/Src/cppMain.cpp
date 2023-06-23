@@ -13,14 +13,12 @@ uint8_t data = 0;
 
 void cppMain()
 {
-    Brytec::EBrytecApp::deserializeModule();
+    Brytec::EBrytecApp::initalize();
 
     // if (Brytec::EBrytecApp::isDeserializeOk())
     //     printf("Des succ");
     // else
     //     printf("Des fail");
-
-    Brytec::EBrytecApp::setMode(Brytec::EBrytecApp::Mode::Normal);
 
     CanBus::start();
 

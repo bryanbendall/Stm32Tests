@@ -2,8 +2,10 @@
 
 #include "BinaryBufferSerializer.h"
 #include "CanBus.h"
+#include "Deserializer/BinaryArrayDeserializer.h"
 #include "EBrytecApp.h"
 #include "UsbBuffer.h"
+#include "usart.h"
 #include "usbd_cdc_if.h"
 
 static Brytec::UsbBuffer s_sendBuffer;

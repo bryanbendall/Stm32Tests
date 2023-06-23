@@ -82,6 +82,7 @@ BrytecConfigEmbedded/Can/EBrytecCan.cpp \
 BrytecConfigEmbedded/Can/ECanCommandQueue.cpp \
 BrytecConfigEmbedded/Can/EPinStatusQueue.cpp \
 BrytecConfigEmbedded/Deserializer/BinaryArrayDeserializer.cpp \
+BrytecConfigEmbedded/Deserializer/BinaryAvrEepromDeserializer.cpp \
 BrytecConfigEmbedded/Deserializer/BinaryBufferSerializer.cpp \
 BrytecConfigEmbedded/Deserializer/BinaryPathDeserializer.cpp \
 BrytecConfigEmbedded/Deserializer/BinaryProgmemDeserializer.cpp \
