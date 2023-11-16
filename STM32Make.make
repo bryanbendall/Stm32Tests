@@ -75,9 +75,7 @@ USB_Device/Target/usbd_conf.c
 
 
 CPP_SOURCES = \
-App/CanBus.cpp \
 App/NucleoBoard.cpp \
-App/Usb.cpp \
 BrytecConfigEmbedded/Can/EBrytecCan.cpp \
 BrytecConfigEmbedded/Can/ECanCommandQueue.cpp \
 BrytecConfigEmbedded/Can/EPinStatusQueue.cpp \
@@ -91,6 +89,7 @@ BrytecConfigEmbedded/ENode.cpp \
 BrytecConfigEmbedded/IOTypes.cpp \
 BrytecConfigEmbedded/Nodes/EAndNode.cpp \
 BrytecConfigEmbedded/Nodes/ECanBusNode.cpp \
+BrytecConfigEmbedded/Nodes/EColorNode.cpp \
 BrytecConfigEmbedded/Nodes/ECompareNode.cpp \
 BrytecConfigEmbedded/Nodes/EConvertNode.cpp \
 BrytecConfigEmbedded/Nodes/ECounterNode.cpp \
@@ -116,7 +115,9 @@ BrytecConfigEmbedded/Usb/UsbDefs.cpp \
 BrytecConfigEmbedded/Utils/ENodeDeserializer.cpp \
 BrytecConfigEmbedded/Utils/ENodeGroup.cpp \
 BrytecConfigEmbedded/Utils/PlacementNew.cpp \
-Core/Src/cppMain.cpp
+Core/Src/cppMain.cpp \
+Stm32Files/CanBus.cpp \
+Stm32Files/Usb.cpp
 
 
 # ASM sources
@@ -200,6 +201,7 @@ C_INCLUDES =  \
 -IDrivers/STM32G4xx_HAL_Driver/Inc/Legacy \
 -IMiddlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc \
 -IMiddlewares/ST/STM32_USB_Device_Library/Core/Inc \
+-IStm32Files \
 -IUSB_Device/App \
 -IUSB_Device/Target
 
@@ -238,7 +240,7 @@ LIBDIR = \
 
 
 # Additional LD Flags from config file
-ADDITIONALLDFLAGS = -Wl,--print-memory-usage -specs=nano.specs 
+ADDITIONALLDFLAGS = -Wl,--print-memory-usage -specs=nano.specs -u _printf_float 
 
 LDFLAGS = $(MCU) $(ADDITIONALLDFLAGS) -T$(LDSCRIPT) $(LIBDIR) $(LIBS) -Wl,-Map=$(BUILD_DIR)/$(TARGET).map,--cref -Wl,--gc-sections
 

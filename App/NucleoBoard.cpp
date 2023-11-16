@@ -74,7 +74,7 @@ void BrytecBoard::shutdownAllPins()
     HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
 }
 
-float BrytecBoard::getPinValue(uint16_t index)
+float BrytecBoard::getPinValue(uint16_t index, IOTypes::Types type)
 {
     return 0.0f;
 }
@@ -103,10 +103,16 @@ void BrytecBoard::setPinValue(uint16_t index, IOTypes::Types type, float value)
     }
 }
 
-void BrytecBoard::sendBrytecCan(CanExtFrame frame)
+void BrytecBoard::sendBrytecCan(const CanExtFrame& frame)
 {
-    Usb::send(frame);
     CanBus::send(frame);
+}
+
+void BrytecBoard::sendBrytecCanUsb(const CanExtFrame& frame)
+{
+    Brytec::UsbPacket packet;
+    packet.set<Brytec::CanExtFrame>(frame);
+    Usb::send(packet);
 }
 
 void BrytecBoard::ReserveConfigSize(uint16_t size)

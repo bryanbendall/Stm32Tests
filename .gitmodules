@@ -1,3 +1,6 @@
 [submodule "BrytecConfigEmbedded"]
 	path = BrytecConfigEmbedded
 	url = https://github.com/bryanbendall/BrytecConfigEmbedded.git
+[submodule "Stm32Files"]
+	path = Stm32Files
+	url = https://github.com/bryanbendall/Stm32Files.git

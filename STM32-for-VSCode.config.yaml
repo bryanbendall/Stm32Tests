@@ -55,6 +55,7 @@ assemblyFlags:
 
 linkerFlags: 
   - -Wl,--print-memory-usage
+  - -u _printf_float
 
 # libraries to be included. The -l prefix to the library will be automatically added.
 libraries: 
@@ -74,9 +75,14 @@ excludes:
   - "**/Example/**"
   - "**/example/**"
   - "**_template.*"
-  - - BrytecConfigEmbedded/Boards/ArduinoMegaTest.cpp
-  - - BrytecConfigEmbedded/Boards/ArduinoUnoTest.cpp
-  - - BrytecConfigEmbedded/Boards/DesktopSimulation.cpp
+  - BrytecConfigEmbedded/Boards/ArduinoMegaTest.cpp
+  - BrytecConfigEmbedded/Boards/ArduinoUnoTest.cpp
+  - BrytecConfigEmbedded/Boards/DesktopSimulation.cpp
+  - Stm32Files/Fram.cpp
+  - Stm32Files/FramDeserializer.cpp
+  - Stm32Files/L9966.cpp
+  - Stm32Files/PwmDriver.cpp
+  - Stm32Files/UsDelay.c
 
 
 # Include directories (directories containing .h or .hpp files)
@@ -90,6 +96,7 @@ includeDirectories:
   - Core/Lib/**
   - App/**
   - BrytecConfigEmbedded/**
+  - Stm32Files/**
 
 
 # Files that should be included in the compilation.
@@ -103,6 +110,7 @@ sourceFiles:
   - Core/Lib/**
   - App/**
   - BrytecConfigEmbedded/**
+  - Stm32Files/**
 
 
 # When no makefile is present it will show a warning pop-up.
