@@ -77,6 +77,7 @@ USB_Device/Target/usbd_conf.c
 CPP_SOURCES = \
 App/NucleoBoard.cpp \
 BrytecConfigEmbedded/Can/EBrytecCan.cpp \
+BrytecConfigEmbedded/Can/ECanBus.cpp \
 BrytecConfigEmbedded/Can/ECanCommandQueue.cpp \
 BrytecConfigEmbedded/Can/EPinStatusQueue.cpp \
 BrytecConfigEmbedded/Deserializer/BinaryArrayDeserializer.cpp \
