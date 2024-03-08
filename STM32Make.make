@@ -75,10 +75,13 @@ USB_Device/Target/usbd_conf.c
 
 
 CPP_SOURCES = \
+App/CanBusDefs.cpp \
 App/NucleoBoard.cpp \
+App/cppMain.cpp \
 BrytecConfigEmbedded/Can/EBrytecCan.cpp \
 BrytecConfigEmbedded/Can/ECanBus.cpp \
 BrytecConfigEmbedded/Can/ECanCommandQueue.cpp \
+BrytecConfigEmbedded/Can/ECanHolleyBroadcastQueue.cpp \
 BrytecConfigEmbedded/Can/EPinStatusQueue.cpp \
 BrytecConfigEmbedded/Deserializer/BinaryArrayDeserializer.cpp \
 BrytecConfigEmbedded/Deserializer/BinaryAvrEepromDeserializer.cpp \
@@ -97,7 +100,9 @@ BrytecConfigEmbedded/Nodes/ECounterNode.cpp \
 BrytecConfigEmbedded/Nodes/ECurveNode.cpp \
 BrytecConfigEmbedded/Nodes/EDelayNode.cpp \
 BrytecConfigEmbedded/Nodes/EFinalValueNode.cpp \
+BrytecConfigEmbedded/Nodes/EHolleyBroadcastNode.cpp \
 BrytecConfigEmbedded/Nodes/EInitialValueNode.cpp \
+BrytecConfigEmbedded/Nodes/EInterpolateNode.cpp \
 BrytecConfigEmbedded/Nodes/EInvertNode.cpp \
 BrytecConfigEmbedded/Nodes/EMapValueNode.cpp \
 BrytecConfigEmbedded/Nodes/EMathNode.cpp \
@@ -107,6 +112,7 @@ BrytecConfigEmbedded/Nodes/EOrNode.cpp \
 BrytecConfigEmbedded/Nodes/EPIDNode.cpp \
 BrytecConfigEmbedded/Nodes/EPinCurrentNode.cpp \
 BrytecConfigEmbedded/Nodes/EPushButtonNode.cpp \
+BrytecConfigEmbedded/Nodes/ERacepakSwitchPanelNode.cpp \
 BrytecConfigEmbedded/Nodes/ESwitchNode.cpp \
 BrytecConfigEmbedded/Nodes/EToggleNode.cpp \
 BrytecConfigEmbedded/Nodes/ETwoStageNode.cpp \
@@ -116,8 +122,8 @@ BrytecConfigEmbedded/Usb/UsbDefs.cpp \
 BrytecConfigEmbedded/Utils/ENodeDeserializer.cpp \
 BrytecConfigEmbedded/Utils/ENodeGroup.cpp \
 BrytecConfigEmbedded/Utils/PlacementNew.cpp \
-Core/Src/cppMain.cpp \
 Stm32Files/CanBus.cpp \
+Stm32Files/MsTimeout.cpp \
 Stm32Files/Usb.cpp
 
 
@@ -260,7 +266,6 @@ vpath %.cpp $(sort $(dir $(CPP_SOURCES)))
 OBJECTS += $(addprefix $(BUILD_DIR)/,$(notdir $(C_SOURCES:.c=.o)))
 vpath %.c $(sort $(dir $(C_SOURCES)))
 
-# list of ASM program objects
 # list of ASM program objects
 UPPER_CASE_ASM_SOURCES = $(filter %.S,$(ASM_SOURCES))
 LOWER_CASE_ASM_SOURCES = $(filter %.s,$(ASM_SOURCES))

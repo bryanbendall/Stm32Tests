@@ -104,22 +104,15 @@ void BrytecBoard::setPinValue(uint16_t index, IOTypes::Types type, float value)
     }
 }
 
-void BrytecBoard::sendCan(uint8_t index, const CanExtFrame& frame)
+void BrytecBoard::sendCan(uint8_t index, const CanFrame& frame)
 {
-    switch (index) {
-    case BT_CAN_Hi_Lo:
-        CanBus::send(frame);
-        break;
-
-    default:
-        break;
-    }
+    CanBus::send(index, frame);
 }
 
-void BrytecBoard::sendBrytecCanUsb(const CanExtFrame& frame)
+void BrytecBoard::sendBrytecCanUsb(const CanFrame& frame)
 {
     Brytec::UsbPacket packet;
-    packet.set<Brytec::CanExtFrame>(frame);
+    packet.set<Brytec::CanFrame>(frame);
     Usb::send(packet);
 }
 
