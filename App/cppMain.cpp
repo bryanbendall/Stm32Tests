@@ -27,6 +27,6 @@ void cppMain()
         Brytec::EBrytecApp::processCanCommands();
 
         if (brytecTimeout.isTimeout())
-            Brytec::EBrytecApp::update(brytecTimeout.getTimestep());
+            Brytec::EBrytecApp::update(brytecTimeout.getTimestepMs());
     }
 }
