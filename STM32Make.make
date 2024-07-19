@@ -119,11 +119,12 @@ BrytecConfigEmbedded/Nodes/ESwitchNode.cpp \
 BrytecConfigEmbedded/Nodes/EToggleNode.cpp \
 BrytecConfigEmbedded/Nodes/ETwoStageNode.cpp \
 BrytecConfigEmbedded/Nodes/EValueNode.cpp \
-BrytecConfigEmbedded/Usb/UsbBuffer.cpp \
+BrytecConfigEmbedded/Usb/ModuleCommand.cpp \
 BrytecConfigEmbedded/Usb/UsbDefs.cpp \
 BrytecConfigEmbedded/Utils/ENodeDeserializer.cpp \
 BrytecConfigEmbedded/Utils/ENodeGroup.cpp \
 BrytecConfigEmbedded/Utils/PlacementNew.cpp \
+Stm32Files/BootloaderTools.cpp \
 Stm32Files/CanBus.cpp \
 Stm32Files/MsTimeout.cpp \
 Stm32Files/Usb.cpp
