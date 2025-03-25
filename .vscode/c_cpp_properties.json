@@ -26,7 +26,7 @@
         "STM32G491xx",
         "USE_HAL_DRIVER"
       ],
-      "compilerPath": "C:\\USERS\\B_BEN\\APPDATA\\ROAMING\\CODE\\USER\\GLOBALSTORAGE\\BMD.STM32-FOR-VSCODE\\@XPACK-DEV-TOOLS\\ARM-NONE-EABI-GCC\\12.2.1-1.2.1\\.CONTENT\\BIN\\ARM-NONE-EABI-GCC.EXE"
+      "compilerPath": "c:\\Users\\b_ben\\AppData\\Roaming\\Code\\User\\globalStorage\\bmd.stm32-for-vscode\\@xpack-dev-tools\\arm-none-eabi-gcc\\12.2.1-1.2.1\\.content\\bin\\arm-none-eabi-gcc.EXE"
     }
   ],
   "version": 4
